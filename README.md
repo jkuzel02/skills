@@ -8,7 +8,13 @@ verify the result.
 
 | Skill | Purpose |
 | --- | --- |
+| [commit-message-generator](./skills/commit-message-generator/SKILL.md) | Generate exactly one Conventional Commit message from the repository's current Git changes. |
 | [docs-generator](./skills/docs-generator/SKILL.md) | Generate, update, and audit README files and API documentation against the actual repository source code. |
+
+The commit message generator uses staged changes when available; otherwise, it
+inspects unstaged tracked changes and relevant untracked files. It follows recent
+repository conventions while using Conventional Commits, and does not modify
+files, stage changes, or create commits.
 
 The documentation generator supports README updates, API documentation, accuracy
 audits, and combined README/API updates. It verifies commands, links, and examples
@@ -35,6 +41,15 @@ Verify the documented commands and links, and modify only README.md.
 For API documentation, the skill uses `docs/API.md` by default unless the target
 repository follows another convention. It does not install dependencies without
 explicit authorization or run destructive commands or deployments.
+
+After making `commit-message-generator` available to your agent, ask:
+
+```text
+Use commit-message-generator to generate a commit message for the current changes.
+```
+
+The skill returns only the commit message, or `No changes to commit.` when no
+changes exist.
 
 ## Adding a skill
 
