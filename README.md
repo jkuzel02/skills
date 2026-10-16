@@ -6,12 +6,15 @@ verify the result.
 
 ## Available skills
 
-No skills have been published in this repository yet. As skills are added, this
-section will link to their instructions and summarize their purpose.
+| Skill | Purpose |
+| --- | --- |
+| [docs-generator](./skills/docs-generator/SKILL.md) | Generate, update, and audit README files and API documentation against the actual repository source code. |
+
+The documentation generator supports README updates, API documentation, accuracy
+audits, and combined README/API updates. It verifies commands, links, and examples
+against the repository and limits changes to the requested documentation.
 
 ## Using a skill
-
-Once skills are available:
 
 1. Browse the catalog and select a skill that matches your task.
 2. Read its `SKILL.md` for prerequisites, scope, and instructions.
@@ -21,6 +24,17 @@ Once skills are available:
 
 Installation and invocation depend on the agent you use. This repository does
 not currently provide an installer or agent-specific setup instructions.
+
+For example, after making `docs-generator` available to your agent, ask:
+
+```text
+Use docs-generator to update README.md based on the current repository.
+Verify the documented commands and links, and modify only README.md.
+```
+
+For API documentation, the skill uses `docs/API.md` by default unless the target
+repository follows another convention. It does not install dependencies without
+explicit authorization or run destructive commands or deployments.
 
 ## Adding a skill
 
@@ -51,4 +65,4 @@ explicitly.
 
 ---
 
-In fact, even this README file has been created with the [docs-generator skill](./skills/docs-generator/).
+This README is maintained with the [docs-generator skill](./skills/docs-generator/SKILL.md).
