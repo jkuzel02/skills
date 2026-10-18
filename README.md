@@ -10,6 +10,7 @@ verify the result.
 | --- | --- |
 | [commit-message-generator](./skills/commit-message-generator/SKILL.md) | Generate exactly one Conventional Commit message from the repository's current Git changes. |
 | [docs-generator](./skills/docs-generator/SKILL.md) | Generate, update, and audit README files and API documentation against the actual repository source code. |
+| [xelatex-generator](./skills/xelatex-generator/SKILL.md) | Create and edit Unicode LaTeX documents with OpenType fonts, XeLaTeX compilation, and PDF verification. |
 
 The commit message generator uses staged changes when available; otherwise, it
 inspects unstaged tracked changes and relevant untracked files. It follows recent
@@ -19,6 +20,13 @@ files, stage changes, or create commits.
 The documentation generator supports README updates, API documentation, accuracy
 audits, and combined README/API updates. It verifies commands, links, and examples
 against the repository and limits changes to the requested documentation.
+
+The XeLaTeX generator creates editable UTF-8 LaTeX sources and compiles a PDF
+when the required tools are available. It preserves existing templates and
+bibliography workflows, checks build diagnostics, and inspects rendered pages
+when PDF rendering tools are available. Compilation requires XeLaTeX and the
+fonts and packages used by the document; `latexmk` is preferred for builds.
+Missing dependencies are installed only when authorized.
 
 ## Using a skill
 
@@ -50,6 +58,14 @@ Use commit-message-generator to generate a commit message for the current change
 
 The skill returns only the commit message, or `No changes to commit.` when no
 changes exist.
+
+After making `xelatex-generator` available to your agent, ask:
+
+```text
+Use xelatex-generator to create a short report from the supplied notes.
+Provide editable LaTeX sources and compile and verify the PDF if the required
+tools are available. Report any missing dependencies or verification limits.
+```
 
 ## Adding a skill
 
